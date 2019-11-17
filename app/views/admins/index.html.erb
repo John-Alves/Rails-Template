@@ -1,0 +1,67 @@
+<%
+  page_title = "Nossos Clientes"
+  page_path = [
+      { name: 'Inicio', link: root_path },
+      { name: 'Nossos Clientes', link: root_path },
+  ]
+  button = {
+      link: admins_new_user_path,
+      class: 'btn btn-info m-l-15',
+      content: '<i class="fa fa-plus-circle"></i> Criar'.html_safe
+  }
+%>
+<%= page_header_helper(page_title, page_path, button) %>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @users.length > 0 %>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td width="10">
+                    <%= link_to admins_edit_user_path(id: user.id), class: 'btn btn-outline-info',
+                                'data-toggle': "tooltip", 'data-placement':"bottom", title: "Editar" do %>
+                      <i class="fa fa-edit"></i>
+                    <% end %>
+                  </td>
+                  <td width="10">
+                    <%= link_to admins_remove_user_path(id: user.id), class: "btn btn-danger",
+                                method: :delete, data: { confirm: 'Deseja excluir esse usuário?' },
+                                'data-toggle': "tooltip", 'data-placement':"bottom", title: "Excluir" do %>
+                      <i class="fa fa-trash"></i>
+                    <% end %>
+                  </td>
+<!--                  <td><%#= link_to 'Editar', admins_edit_user_path(user) %></td>-->
+<!--                  <td><%#= link_to 'Edit', edit_admin_path(user) %></td>-->
+<!--                  <td><%#= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="10">
+                  <h6 class="card-subtitle card-subtitle-no-result">
+                    Nenhum usuário foi encontrado.
+                  </h6>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<%
+  page_title = 'Editar Usuário'
+  page_path = [
+      { name: 'Inicio', link: root_path },
+      { name: 'Editar Usuário', link: '' },
+  ]
+%>
+
+<%= page_header_helper(page_title, page_path) %>
+
+<%= render 'form', user: @user, url: admins_update_user_path %>

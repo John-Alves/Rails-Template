@@ -1,0 +1,65 @@
+<% if user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(user.errors.count, "error") %> impediram de criar esse usuário:</h2>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <%= form_with(model: user, method:'post', url: url, local: true, class:'form-material m-t-40') do |f| %>
+          <%= hidden_field_tag :id, user.id %>
+
+          <div class="row">
+            <div class="form-group col-md-8">
+              <%= f.label :name, "Nome" %><br />
+              <%= f.text_field :name, class: 'form-control form-control-line' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-8">
+              <%= f.label :email, "Email" %><br />
+              <%= f.email_field :email, class: 'form-control form-control-line' %>
+            </div>
+          </div>
+          <div class="row">
+            <%
+              password_required = false
+              password_required = true if user.id.nil?
+            %>
+            <div class="form-group col-md-4">
+              <%= f.label :password, "Senha (6 caracteres)" %><br />
+              <%= f.password_field :password, class: 'form-control form-control-line', required: password_required %>
+            </div>
+            <div class="form-group col-md-4">
+              <%= f.label :password_confirmation, 'Confirme a Senha' %><br />
+              <%= f.password_field :password_confirmation, class: 'form-control form-control-line', required: password_required %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-8">
+              <%= f.label :plan_id, "Plano" %>
+              <%
+                plans = options_for_select(Plan.all.map{ |plan| [plan.name, plan.id] }, user.plan_id )
+              %>
+              <%= select :user, :plan_id, plans, { include_blank: false }, class: "form-control"%>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= link_to 'Voltar', admins_path, class: 'btn btn-secondary waves-effect waves-light m-r-10' %>
+            <%= button_tag "Salvar", class: 'btn btn-info waves-effect waves-light m-r-10' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

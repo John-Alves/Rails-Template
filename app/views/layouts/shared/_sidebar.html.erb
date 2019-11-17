@@ -1,0 +1,42 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+  <div class="d-flex no-block nav-text-box align-items-center">
+    <span>
+      Bem vindo, <%= current_user.name %>
+    </span>
+    <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)">
+      <i class="fa fa-bars fa-close"></i>
+    </a>
+  </div>
+  <!-- Sidebar scroll-->
+  <div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+      <ul id="sidebarnav">
+
+        <% if current_user.ADMIN? %>
+          <li>
+            <%= link_to admins_path, class: 'waves-effect waves-dark', 'aria-expanded': 'false' do %>
+              <span class="hide-menu">Usuários</span>
+            <% end %>
+          </li>
+        <% end %>
+
+        <div class="text-center m-t-30">
+          <%= link_to 'Sair', destroy_user_session_path, style:"width: 50%;",
+                      class: 'btn waves-effect waves-light btn-danger', 'aria-expanded': 'false' %>
+        </div>
+      </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+  </div>
+  <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

@@ -1,0 +1,46 @@
+// In this scss you can overwrite all our scss, we suggested you to add your scss into this, so whenever the update comes it will not affect your code.
+.topbar{
+  background-color: #2680EB !important;
+}
+.page-wrapper{
+  background-color: white !important;
+}
+body {
+  background-color: white !important;
+}
+footer {
+  position: fixed !important;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: font-url("icomoon.ttf?-rdmvgc") format("truetype");
+}
+@font-face {
+  font-family: 'simple-line-icons';
+  src: font-url('Simple-Line-Icons.ttf?-i3a2kk') format('truetype');
+}
+@font-face {
+  font-family: 'themify';
+  src: font-url('themify.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Material Design Icons';
+  src: font-url('materialdesignicons-webfont.ttf') format('truetype');
+}
+.blank-space {
+  height: 67px;
+  width: 100%;
+  display: block;
+}
+.force-flexbox {
+  display: flex !important;
+}
+@media (max-width: 575px) {
+  .justify-content-end {
+    justify-content: flex-start !important;
+  }
+}
+.breadcrumb-navigator{
+
+}

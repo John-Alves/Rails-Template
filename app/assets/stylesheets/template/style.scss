@@ -1,0 +1,26 @@
+/*
+Template Name: Admin Template
+Author: Niravjoshi / Wrappixel
+File: scss
+*/
+
+@import 'variable';
+
+@import 'colors/default-dark';
+
+@import "fonts/themify-icons/themify-icons";
+
+// Import Bootstrap source files
+@import "plugins/bootstrap/bootstrap";
+
+//This is the core files
+@import 'core/core';
+@import 'widgets/widgets';
+@import 'responsive';
+
+// Importing template pages
+@import "pages/login-register-lock";
+
+//In This scss you can write your scss
+@import 'custom'; 
+

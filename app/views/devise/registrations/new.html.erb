@@ -1,0 +1,41 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-horizontal form-material", id: "loginform") do |f| %>
+  <h3 class="box-title m-b-20">Cadastre-se</h3>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <%= f.text_field :name, autofocus: true, required: true, autocomplete: "name", class: "form-control", placeholder: "Nome" %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <%= f.email_field :email, autocomplete: "email", required: true, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <% password_label = "Senha (mínimo de #{@minimum_password_length} caracteres)" %>
+      <%= f.password_field :password, class: "form-control", required: true, placeholder: password_label %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirme sua senha" %>
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <div class="col-xs-12 p-b-20">
+      <%= f.submit "Cadastrar", class: "btn btn-block btn-lg btn-info btn-rounded" %>
+    </div>
+  </div>
+
+  <div class="form-group m-b-0">
+    <div class="col-sm-12 text-center">
+      Já possui uma conta?
+      <%= link_to new_session_path(resource_name), class: "text-info m-l-5" do %>
+        <b>Faça seu login</b>
+      <% end %>
+    </div>
+  </div>
+<% end %>

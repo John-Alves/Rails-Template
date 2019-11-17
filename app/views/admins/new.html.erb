@@ -1,0 +1,11 @@
+<%
+  page_title = 'Novo Usuário'
+  page_path = [
+      { name: 'Inicio', link: root_path },
+      { name: 'Novo Usuário', link: '' },
+  ]
+%>
+
+<%= page_header_helper(page_title, page_path) %>
+
+<%= render 'form', user: @user, url: admins_create_user_path %>

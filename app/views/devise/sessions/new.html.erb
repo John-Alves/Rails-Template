@@ -1,0 +1,50 @@
+
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal form-material", id: "loginform") do |f| %>
+  <h3 class="box-title m-b-20">Login</h3>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-xs-12">
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Senha" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-12">
+      <div class="custom-control custom-checkbox">
+        <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me, class: "custom-control-input", id: "customCheck1"%>
+          <%= f.label :remember_me, "Lembre-me", class: "custom-control-label", for: "customCheck1" %>
+        <% end %>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%#= link_to new_password_path(resource_name), class: "text-dark float-right", id: "to-recover" do %>
+<!--            <i class="fa fa-lock m-r-5"></i> Esqueceu sua senha?-->
+          <%# end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group text-center">
+    <div class="col-xs-12 p-b-20">
+      <%= f.submit "Login", class: "btn btn-block btn-lg btn-info btn-rounded" %>
+    </div>
+  </div>
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+<!--    <div class="form-group m-b-0">-->
+<!--      <div class="col-sm-12 text-center">-->
+<!--        Ainda não possui uma conta?-->
+
+        <%#= link_to new_registration_path(resource_name), class: "text-info m-l-5" do %>
+<!--          <b>Cadastre-se</b>-->
+        <%# end %>
+<!--      </div>-->
+<!--    </div>-->
+  <% end %>
+<% end %>
+
+<%#= render "devise/shared/links" %>
